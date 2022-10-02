@@ -1,5 +1,6 @@
 import { Layout } from "antd";
 import React from "react";
+import Banner from "./banner/Banner";
 import AppHeader from "./header/Header";
 const { Header, Content, Footer } = Layout;
 const MainLayout = () => {
@@ -8,7 +9,9 @@ const MainLayout = () => {
       <Header>
         <AppHeader />
       </Header>
-      <Content> cotnetn cotnent</Content>
+      <Content>
+        <Banner />
+      </Content>
       <Footer>footer</Footer>
     </Layout>
   );
