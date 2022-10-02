@@ -26,14 +26,14 @@ const ContentComp = () => {
     getData();
   }, [filters, currentPage]);
   return (
-    <>
+    <div className="content-layout">
       <SearchBar updateFilters={setFilters} />
       <DataGrid
         capsules={data}
         currentPage={currentPage}
         updatePage={setCurrentPage}
       />
-    </>
+    </div>
   );
 };
 export default ContentComp;

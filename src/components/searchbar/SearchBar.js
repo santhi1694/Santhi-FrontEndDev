@@ -38,10 +38,15 @@ const SearchBar = ({ updateFilters }) => {
         initialValues={{ layout: "inline" }}
       >
         <Form.Item label="Status" name="status">
-          <Select showSearch placeholder="Status" optionFilterProp="children">
+          <Select
+            showSearch
+            placeholder="Status"
+            optionFilterProp="children"
+            style={{ width: "150px" }}
+          >
             <Option value="active">active</Option>
             <Option value="unknown">unknown</Option>
-            <Option value="tom">Tom</Option>
+            <Option value="expired">expired</Option>
           </Select>
         </Form.Item>
         <Form.Item label="Launch Date" name="original_launch">
@@ -56,16 +61,18 @@ const SearchBar = ({ updateFilters }) => {
             showSearch
             placeholder="Type"
             optionFilterProp="children"
+            style={{ width: "150px" }}
+
             //   onSearch={onSearch}
           >
-            <Option value="jack">Jack</Option>
-            <Option value="lucy">Lucy</Option>
-            <Option value="tom">Tom</Option>
+            <Option value="Dragon 1.0">Dragon 1.0</Option>
+            <Option value="Dragon 1.1">Dragon 1.1</Option>
+            <Option value="Dragon 2.0">Dragon 2.0</Option>
           </Select>
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Submit
+            Search
           </Button>
         </Form.Item>
       </Form>

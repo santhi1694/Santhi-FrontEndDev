@@ -7,9 +7,18 @@
   height: 200px;
   background-size: cover;
 }
-
+.app-banner .ant-typography {
+  color: white;
+}
+.app-banner .banner-text {
+  margin: 4rem;
+}
 .ant-list-item .ant-card-body {
   min-height: 100px;
+  background-color: #a0a5e2;
+}
+.ant-list-item .ant-card {
+  background: #c1c9ea;
 }
 .card-content {
   text-overflow: ellipsis;
@@ -20,10 +29,13 @@
   white-space: normal;
 }
 
-.search-layout {
+.content-layout {
   padding: 1rem;
+  background-color: white;
 }
-
+.search-layout {
+  padding-bottom: 1rem;
+}
 /* Capsule view modal  */
 .capsule-data-labels {
   display: grid;
