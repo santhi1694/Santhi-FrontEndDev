@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
     $bearer_token = get_bearer_token();
     $is_jwt_valid = is_jwt_valid($bearer_token);
-    if(!$is_jwt_valid) {
+    if($is_jwt_valid) {
         $url_components = parse_url($_SERVER['REQUEST_URI']);
         $capsules = new Capsule($url_components);
         $data = $capsules->read();

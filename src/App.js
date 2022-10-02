@@ -13,7 +13,7 @@ function App() {
         })
         .then((token) => {
           console.log("token", token);
-          setUserToken(token.token);
+          setUserToken(token);
           setIsLoading(false);
         });
     };

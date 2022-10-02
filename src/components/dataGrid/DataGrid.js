@@ -274,8 +274,7 @@ const sampledata = [
 ];
 
 const DataGrid = () => {
-  const contextData = useContext(AppContext);
-  console.log("usertoke", contextData);
+  //   const contextData = useContext(AppContext);
   const [showModal, setShowModal] = useState(false);
   const [cardData, setCardData] = useState({});
   const onItemClick = (data) => {
@@ -286,22 +285,17 @@ const DataGrid = () => {
     setShowModal(false);
     setCardData("");
   };
-  useEffect(() => {
-    fetch("http://localhost:8000/getCapsules", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${contextData.userToken}`,
-      },
-      redirect: "follow", // manual, *follow, error
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((ans) => {
-        const response = ans;
-        console.log("ans", ans);
-      });
-  });
+  // commenting PHP API due to issues
+  //   useEffect(() => {
+  //     fetch("http://localhost:8000/index.php", {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${contextData.userToken}`,
+  //       },
+  //       redirect: "follow", // manual, *follow, error
+  //     })
+
+  //   });
   return (
     <>
       <Modal
