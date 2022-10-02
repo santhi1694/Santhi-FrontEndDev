@@ -1,5 +1,5 @@
 import { Button, DatePicker, Form, Select } from "antd";
-import React from "react";
+import React, { useState } from "react";
 const { Option } = Select;
 const formFilter = (formValues) => {
   let filter = "?";
@@ -12,12 +12,16 @@ const formFilter = (formValues) => {
 };
 const SearchBar = ({ updateFilters }) => {
   const [form] = Form.useForm();
+  const [showError, setError] = useState(false);
 
-  const onFinish = (values) => {
+  const onFinish = (values = {}) => {
     const formValues = {
       ...values,
       original_launch: values.original_launch?.toISOString(),
     };
+    console.log("sd", Boolean(Object.entries(values).length));
+    setError(Boolean(Object.entries(values).length));
+
     const filter = formFilter(formValues);
     updateFilters(filter);
     console.log(values, "values", formValues);
@@ -63,10 +67,15 @@ const SearchBar = ({ updateFilters }) => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Submit
+            Search
           </Button>
         </Form.Item>
       </Form>
+      {showError && (
+        <div className="error-text">
+          Please select atleast one filter before serching !!
+        </div>
+      )}
     </div>
   );
 };
