@@ -4,7 +4,7 @@ import MainLayout from "./components/MainLayout";
 import AppContext from "./context/AppContext";
 function App() {
   const [userToken, setUserToken] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const getToken = () => {
       fetch("http://localhost:8000/getToken")
@@ -17,7 +17,7 @@ function App() {
           setIsLoading(false);
         });
     };
-    getToken();
+    // getToken();
   }, []);
   if (isLoading) {
     return <Spin />;
