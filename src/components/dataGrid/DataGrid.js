@@ -273,7 +273,7 @@ const sampledata = [
   },
 ];
 
-const DataGrid = () => {
+const DataGrid = ({ capsules = [] }) => {
   //   const contextData = useContext(AppContext);
   const [showModal, setShowModal] = useState(false);
   const [cardData, setCardData] = useState({});
@@ -310,7 +310,7 @@ const DataGrid = () => {
       </Modal>
       <List
         grid={{ gutter: 16, column: 4 }}
-        dataSource={sampledata}
+        dataSource={capsules}
         renderItem={(item) => (
           <List.Item key={item.capsule_id + item.capsule_serial}>
             <Card title={item.capsule_serial} onClick={() => onItemClick(item)}>

@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import React from "react";
 import Banner from "./banner/Banner";
+import ContentComp from "./Content";
 import DataGrid from "./dataGrid/DataGrid";
 import AppHeader from "./header/Header";
 import SearchBar from "./searchbar/SearchBar";
@@ -13,8 +14,7 @@ const MainLayout = () => {
       </Header>
       <Content>
         <Banner />
-        <SearchBar />
-        <DataGrid />
+        <ContentComp />
       </Content>
       <Footer>footer</Footer>
     </Layout>
