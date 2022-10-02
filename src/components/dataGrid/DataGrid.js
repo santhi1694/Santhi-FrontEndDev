@@ -286,11 +286,12 @@ const DataGrid = () => {
   return (
     <>
       <Modal
-        title="Capsule data modal dialog"
+        title={`${cardData.capsule_serial}`}
         centered
         visible={showModal}
         onCancel={onCloseModal}
         footer={null}
+        width={"50%"}
       >
         <CapsuleContent capsuleData={cardData} />
       </Modal>
@@ -298,8 +299,8 @@ const DataGrid = () => {
         grid={{ gutter: 16, column: 4 }}
         dataSource={sampledata}
         renderItem={(item) => (
-          <List.Item>
-            <Card title={item.capsule_serial} onClick={onItemClick}>
+          <List.Item key={item.capsule_id + item.capsule_serial}>
+            <Card title={item.capsule_serial} onClick={() => onItemClick(item)}>
               {item.details}
             </Card>
           </List.Item>

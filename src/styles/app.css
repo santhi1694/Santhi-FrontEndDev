@@ -8,3 +8,14 @@
 .search-layout {
   padding: 1rem;
 }
+
+/* Capsule view modal  */
+.capsule-data-labels {
+  display: grid;
+  gap: 1rem;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(3, auto);
+}
+.label {
+  font-weight: 600;
+}
