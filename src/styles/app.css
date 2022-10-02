@@ -5,3 +5,6 @@
 .app-banner {
   background-image: url("../assets/capsule.jpg");
 }
+.search-layout {
+  padding: 1rem;
+}
