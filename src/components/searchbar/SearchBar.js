@@ -19,9 +19,11 @@ const SearchBar = ({ updateFilters }) => {
       ...values,
       original_launch: values.original_launch?.toISOString(),
     };
-    console.log("sd", Boolean(Object.entries(values).length));
-    setError(Boolean(Object.entries(values).length));
-
+    const isError = Boolean(Object.entries(values).length);
+    setError(isError);
+    if (isError) {
+      return;
+    }
     const filter = formFilter(formValues);
     updateFilters(filter);
     console.log(values, "values", formValues);
