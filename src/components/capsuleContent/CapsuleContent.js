@@ -39,9 +39,16 @@ const CapsuleContent = ({ capsuleData }) => {
       <br />
       <div>
         <div className="label">Missions:</div>
-        {capsuleData.missions.map((mission) => (
-          <DataLabels renderKeys={[["name"], ["flight"]]} data={mission} />
-        ))}
+
+        {!capsuleData.length
+          ? "No Missions"
+          : capsuleData.missions.map((mission) => (
+              <DataLabels
+                key={mission.name}
+                renderKeys={[["name"], ["flight"]]}
+                data={mission}
+              />
+            ))}
       </div>
     </div>
   );
