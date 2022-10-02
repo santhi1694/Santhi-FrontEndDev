@@ -50,3 +50,7 @@
   color: red;
   margin: 1rem;
 }
+.form-submit-btns {
+  display: flex;
+  gap: 10px;
+}

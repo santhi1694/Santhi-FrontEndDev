@@ -30,6 +30,10 @@ const SearchBar = ({ updateFilters }) => {
     console.log(values, "values", formValues);
   };
 
+  const onClear = () => {
+    form.resetFields();
+    updateFilters("");
+  };
   return (
     <div className="search-layout">
       <Form
@@ -72,9 +76,14 @@ const SearchBar = ({ updateFilters }) => {
           </Select>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Search
-          </Button>
+          <div className="form-submit-btns">
+            <Button type="primary" htmlType="submit">
+              Search
+            </Button>
+            <Button type="secondary" onClick={onClear}>
+              Clear Filters
+            </Button>
+          </div>
         </Form.Item>
       </Form>
       {showError && (
