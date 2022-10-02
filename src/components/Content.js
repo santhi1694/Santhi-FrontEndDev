@@ -25,9 +25,13 @@ const ContentComp = () => {
     };
     getData();
   }, [filters, currentPage]);
+  const onSearch = (filterstring) => {
+    setCurrentPage(1);
+    setFilters(filterstring);
+  };
   return (
     <div className="content-layout">
-      <SearchBar updateFilters={setFilters} />
+      <SearchBar updateFilters={onSearch} />
       <DataGrid
         capsules={data}
         currentPage={currentPage}
