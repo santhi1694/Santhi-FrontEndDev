@@ -1,5 +1,6 @@
-import { Card, List } from "antd";
-import React from "react";
+import { Card, List, Modal } from "antd";
+import React, { useState } from "react";
+import CapsuleContent from "../capsuleContent/CapsuleContent";
 
 const sampledata = [
   {
@@ -270,17 +271,41 @@ const sampledata = [
     reuse_count: 0,
   },
 ];
+
 const DataGrid = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [cardData, setCardData] = useState({});
+  const onItemClick = (data) => {
+    setShowModal(true);
+    setCardData(data);
+  };
+  const onCloseModal = () => {
+    setShowModal(false);
+    setCardData("");
+  };
   return (
-    <List
-      grid={{ gutter: 16, column: 4 }}
-      dataSource={sampledata}
-      renderItem={(item) => (
-        <List.Item>
-          <Card title={item.capsule_serial}>{item.details}</Card>
-        </List.Item>
-      )}
-    />
+    <>
+      <Modal
+        title="Capsule data modal dialog"
+        centered
+        visible={showModal}
+        onCancel={onCloseModal}
+        footer={null}
+      >
+        <CapsuleContent capsuleData={cardData} />
+      </Modal>
+      <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={sampledata}
+        renderItem={(item) => (
+          <List.Item>
+            <Card title={item.capsule_serial} onClick={onItemClick}>
+              {item.details}
+            </Card>
+          </List.Item>
+        )}
+      />
+    </>
   );
 };
 export default DataGrid;
