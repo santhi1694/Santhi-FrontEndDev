@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import React from "react";
 import Banner from "./banner/Banner";
+import DataGrid from "./dataGrid/DataGrid";
 import AppHeader from "./header/Header";
 const { Header, Content, Footer } = Layout;
 const MainLayout = () => {
@@ -11,6 +12,7 @@ const MainLayout = () => {
       </Header>
       <Content>
         <Banner />
+        <DataGrid />
       </Content>
       <Footer>footer</Footer>
     </Layout>
