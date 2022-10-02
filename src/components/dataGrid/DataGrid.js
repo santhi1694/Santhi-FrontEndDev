@@ -1,5 +1,6 @@
 import { Card, List, Modal } from "antd";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import AppContext from "../../context/AppContext";
 import CapsuleContent from "../capsuleContent/CapsuleContent";
 
 const sampledata = [
@@ -273,6 +274,8 @@ const sampledata = [
 ];
 
 const DataGrid = () => {
+  const contextData = useContext(AppContext);
+  console.log("usertoke", contextData);
   const [showModal, setShowModal] = useState(false);
   const [cardData, setCardData] = useState({});
   const onItemClick = (data) => {
@@ -283,12 +286,28 @@ const DataGrid = () => {
     setShowModal(false);
     setCardData("");
   };
+  useEffect(() => {
+    fetch("http://localhost:8000/getCapsules", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${contextData.userToken}`,
+      },
+      redirect: "follow", // manual, *follow, error
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((ans) => {
+        const response = ans;
+        console.log("ans", ans);
+      });
+  });
   return (
     <>
       <Modal
         title={`${cardData.capsule_serial}`}
         centered
-        visible={showModal}
+        open={showModal}
         onCancel={onCloseModal}
         footer={null}
         width={"50%"}
