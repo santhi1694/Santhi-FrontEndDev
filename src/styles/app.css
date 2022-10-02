@@ -4,7 +4,22 @@
 }
 .app-banner {
   background-image: url("../assets/capsule.jpg");
+  height: 200px;
+  background-size: cover;
 }
+
+.ant-list-item .ant-card-body {
+  min-height: 100px;
+}
+.card-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
 .search-layout {
   padding: 1rem;
 }
@@ -18,4 +33,8 @@
 }
 .label {
   font-weight: 600;
+}
+.error-text {
+  color: red;
+  margin: 1rem;
 }

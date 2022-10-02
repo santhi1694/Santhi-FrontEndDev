@@ -19,7 +19,7 @@ const SearchBar = ({ updateFilters }) => {
       ...values,
       original_launch: values.original_launch?.toISOString(),
     };
-    const isError = Boolean(Object.entries(values).length);
+    const isError = !Boolean(Object.entries(values).length);
     setError(isError);
     if (isError) {
       return;
@@ -28,6 +28,7 @@ const SearchBar = ({ updateFilters }) => {
     updateFilters(filter);
     console.log(values, "values", formValues);
   };
+
   return (
     <div className="search-layout">
       <Form
@@ -37,12 +38,7 @@ const SearchBar = ({ updateFilters }) => {
         initialValues={{ layout: "inline" }}
       >
         <Form.Item label="Status" name="status">
-          <Select
-            showSearch
-            placeholder="Status"
-            optionFilterProp="children"
-            //   onSearch={onSearch}
-          >
+          <Select showSearch placeholder="Status" optionFilterProp="children">
             <Option value="active">active</Option>
             <Option value="unknown">unknown</Option>
             <Option value="tom">Tom</Option>
@@ -69,7 +65,7 @@ const SearchBar = ({ updateFilters }) => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Search
+            Submit
           </Button>
         </Form.Item>
       </Form>
@@ -77,7 +73,7 @@ const SearchBar = ({ updateFilters }) => {
         <div className="error-text">
           Please select atleast one filter before serching !!
         </div>
-      )}
+      )}{" "}
     </div>
   );
 };

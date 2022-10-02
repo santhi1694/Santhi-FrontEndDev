@@ -314,7 +314,9 @@ const DataGrid = ({ capsules = [] }) => {
         renderItem={(item) => (
           <List.Item key={item.capsule_id + item.capsule_serial}>
             <Card title={item.capsule_serial} onClick={() => onItemClick(item)}>
-              {item.details}
+              <div className="card-content">
+                {item.details}
+              </div>
             </Card>
           </List.Item>
         )}
