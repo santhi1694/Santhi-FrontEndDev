@@ -273,7 +273,7 @@ const sampledata = [
   },
 ];
 
-const DataGrid = ({ capsules = [] }) => {
+const DataGrid = ({ capsules = [], currentPage, updatePage }) => {
   //   const contextData = useContext(AppContext);
   const [showModal, setShowModal] = useState(false);
   const [cardData, setCardData] = useState({});
@@ -285,6 +285,10 @@ const DataGrid = ({ capsules = [] }) => {
     setShowModal(false);
     setCardData("");
   };
+  const onPagechange = (page) => {
+    updatePage(page);
+  };
+
   // commenting PHP API due to issues
   //   useEffect(() => {
   //     fetch("http://localhost:8000/index.php", {
@@ -311,12 +315,16 @@ const DataGrid = ({ capsules = [] }) => {
       <List
         grid={{ gutter: 16, column: 4 }}
         dataSource={capsules}
+        pagination={{
+          current: currentPage,
+          onChange: onPagechange,
+          pageSize: 8,
+          total: 20,
+        }}
         renderItem={(item) => (
           <List.Item key={item.capsule_id + item.capsule_serial}>
             <Card title={item.capsule_serial} onClick={() => onItemClick(item)}>
-              <div className="card-content">
-                {item.details}
-              </div>
+              <div className="card-content">{item.details}</div>
             </Card>
           </List.Item>
         )}

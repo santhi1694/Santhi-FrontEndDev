@@ -5,8 +5,12 @@ import SearchBar from "./searchbar/SearchBar";
 const ContentComp = () => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
-    let url = "https://api.spacexdata.com/v3/capsules";
+    let url = `https://api.spacexdata.com/v3/capsules?limit=8&offset=${
+      (currentPage - 1) * 8
+    }`;
     if (filters) {
       url = url + filters;
     }
@@ -20,11 +24,15 @@ const ContentComp = () => {
         });
     };
     getData();
-  }, [filters]);
+  }, [filters, currentPage]);
   return (
     <>
       <SearchBar updateFilters={setFilters} />
-      <DataGrid capsules={data} />
+      <DataGrid
+        capsules={data}
+        currentPage={currentPage}
+        updatePage={setCurrentPage}
+      />
     </>
   );
 };

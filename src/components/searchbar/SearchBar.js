@@ -2,7 +2,7 @@ import { Button, DatePicker, Form, Select } from "antd";
 import React, { useState } from "react";
 const { Option } = Select;
 const formFilter = (formValues) => {
-  let filter = "?";
+  let filter = "&";
   Object.entries(formValues).forEach(([label, value]) => {
     if (value) {
       filter = `${filter}${label}=${value}&`;
